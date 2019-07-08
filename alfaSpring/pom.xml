@@ -15,7 +15,7 @@
     <groupId>by.st.spring</groupId>
     <artifactId>alfaSpring</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
