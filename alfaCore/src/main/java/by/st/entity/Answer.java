@@ -13,13 +13,13 @@ import javax.validation.constraints.NotNull;
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ans_id;
+    private Long ansId;
 
     @NotNull
     private String ans;
 
     @ManyToOne
-    @JoinColumn(name = "voice_id", insertable = false, updatable = false)
+    @JoinColumn(name = "voiceId", insertable = false, updatable = false)
     private Voice voice;
 
     private int count;

@@ -14,7 +14,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private Long userId;
 
     @NotNull
     private String login;
@@ -31,7 +31,7 @@ public class User {
     @ManyToMany
     @JoinTable(
             name = "user_voice",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "voice_id"))
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "voiceId"))
     private Set<Voice> voices;
 }

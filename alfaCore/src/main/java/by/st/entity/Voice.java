@@ -14,7 +14,7 @@ import java.util.Set;
 public class Voice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long voice_id;
+    private Long voiceId;
 
     @NotNull
     private String topic;
@@ -24,14 +24,14 @@ public class Voice {
     private String link;
 
     @OneToMany
-    @JoinColumn(name = "ans_id")
+    @JoinColumn(name = "ansId")
     Set<Answer> answerList;
 
     @ManyToMany
     @JoinTable(
             name = "user_voice",
-            joinColumns = @JoinColumn(name = "voice_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+            joinColumns = @JoinColumn(name = "voiceId"),
+            inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<User> users;
 
 }
