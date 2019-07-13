@@ -21,8 +21,6 @@ public class Voice {
 
     private int status;
 
-    private String link;
-
     @OneToMany
     @JoinColumn(name = "ansId")
     Set<Answer> answerList;
