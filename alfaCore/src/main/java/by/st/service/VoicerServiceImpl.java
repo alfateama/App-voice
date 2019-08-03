@@ -7,12 +7,13 @@ import by.st.repository.AnswerRepository;
 import by.st.repository.UserRepository;
 import by.st.repository.VoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-@Service
+@Component(value="ServiceImpl")
 public class VoicerServiceImpl implements VoicerService{
 
     @Autowired
@@ -71,6 +72,21 @@ public class VoicerServiceImpl implements VoicerService{
     @Override
     public List<Voice> getVoices() {
         return voiceRepository.findAll();
+    }
+
+    @Override
+    public Optional<Voice> getVoice(Long voiceId) {
+        return voiceRepository.findById(voiceId);
+    }
+
+    @Override
+    public Voice updateVoice(Voice voice) {
+        return voiceRepository.save(voice);
+    }
+
+    @Override
+    public void deleteVoice(Voice voice) {
+        voiceRepository.delete(voice);
     }
 
 }

@@ -2,6 +2,7 @@ package by.st.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Table(name = "voice")
 @Getter
 @Setter
+@EntityListeners(AuditingEntityListener.class)
 public class Voice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +23,7 @@ public class Voice {
 
     private int status;
 
-    @OneToMany
-    @JoinColumn(name = "ansId")
+    @OneToMany(mappedBy = "voice", cascade = CascadeType.ALL)
     Set<Answer> answerList;
 
     @ManyToMany
@@ -32,4 +33,14 @@ public class Voice {
             inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<User> users;
 
+    public void setAnswerList(Set<Answer> answerList) {
+        this.answerList = answerList;
+        this.answerList.forEach(x -> x.setVoice(this));
+    }
+
+    public void updateVoice(Voice voice){
+        this.setStatus(voice.getStatus());
+        this.setTopic(voice.getTopic());
+        this.setAnswerList(voice.getAnswerList());
+    }
 }
