@@ -4,6 +4,7 @@ import by.st.entity.Answer;
 import by.st.entity.Voice;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface VoicerService {
 
@@ -20,5 +21,11 @@ public interface VoicerService {
     public void deleteAnswer(Long ansId);
 
     public List<Voice> getVoices();
+
+    public Optional<Voice> getVoice(Long voiceId);
+
+    public Voice updateVoice(Voice voice);
+
+    public void deleteVoice(Voice voice);
 
 }

@@ -1,7 +1,9 @@
 package by.st.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,6 +12,7 @@ import javax.validation.constraints.NotNull;
 @Table(name="answer")
 @Getter
 @Setter
+@EntityListeners(AuditingEntityListener.class)
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +22,8 @@ public class Answer {
     private String ans;
 
     @ManyToOne
-    @JoinColumn(name = "voiceId", insertable = false, updatable = false)
+    @JoinColumn(name = "voiceId")
+    @JsonIgnore
     private Voice voice;
 
     private int count;
