@@ -1,5 +1,6 @@
 package by.st.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -22,6 +23,7 @@ public class Answer {
 
     @ManyToOne
     @JoinColumn(name = "voiceId")
+    @JsonIgnore
     private Voice voice;
 
     private int count;

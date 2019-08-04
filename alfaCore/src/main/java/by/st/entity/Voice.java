@@ -23,7 +23,7 @@ public class Voice {
 
     private int status;
 
-    @OneToMany(mappedBy = "voice", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "voice", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     Set<Answer> answerList;
 
     @ManyToMany

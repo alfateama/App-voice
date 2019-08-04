@@ -52,5 +52,14 @@ public class MainController {
         return voicerService.getVoices();
     }
 
+    @GetMapping("/voice/{id}/{status}")
+    public Voice ChangeStatusVoice(@PathVariable(value = "id") Long voiceId,
+                                          @PathVariable(value = "status") Integer status){
+        Voice voice = voicerService.getVoice(voiceId)
+                .orElseThrow(() -> new ResourceNotFoundException("Voice", "id", voiceId));
+        voice.setStatus(status);
+        return voice;
+    }
+
 
 }
