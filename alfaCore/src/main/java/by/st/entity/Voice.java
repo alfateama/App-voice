@@ -21,7 +21,8 @@ public class Voice {
     @NotNull
     private String topic;
 
-    private int status;
+    @Enumerated(EnumType.ORDINAL)
+    private Status status;
 
     @OneToMany(mappedBy = "voice", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     Set<Answer> answerList;
@@ -36,6 +37,14 @@ public class Voice {
     public void setAnswerList(Set<Answer> answerList) {
         this.answerList = answerList;
         this.answerList.forEach(x -> x.setVoice(this));
+    }
+
+    public void setStatus(int status){
+        this.status = Status.inEnum(status);
+    }
+
+    public int getStatus(){
+        return status.getCode();
     }
 
     public void updateVoice(Voice voice){
