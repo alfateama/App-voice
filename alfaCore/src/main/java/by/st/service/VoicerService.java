@@ -10,7 +10,7 @@ public interface VoicerService {
 
     public Long createVoices(Voice voice);
 
-    public Long openOrCloseVoices(Long voiceId, int status); //TODO переделать статусы на enum
+    public Long openOrCloseVoices(Long voiceId, int status);
 
     public boolean registrVoice(Long userId, Long ansId);
 
